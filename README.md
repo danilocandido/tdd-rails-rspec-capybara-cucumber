@@ -22,3 +22,13 @@ bundle exec spring binstub --all
 
 ## RUN tests
 bin/rspec
+
+
+## YARN
+yarn add jquery
+yarn add boostrap
+
+## other gems
+gem 'simple_form'
+bin/rails g simple_form:install --bootstrap
+
