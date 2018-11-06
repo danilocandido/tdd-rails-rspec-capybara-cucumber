@@ -1,24 +1,24 @@
-# README
+## added gems
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+```
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
+end
 
-Things you may want to cover:
+group :development do
+  gem 'spring'
+  gem 'spring-commands-rspec'
+end
 
-* Ruby version
+group :test do
+  gem 'capybara'
+end
+```
 
-* System dependencies
+## run comand tests
+bin/rails rspec:install
+bundle exec spring binstub --all
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## RUN tests
+bin/rspec

@@ -1,0 +1,7 @@
+# Acceptance Tests
+
+According to rspec logs
+1º add a route
+2º add a controller
+3º add a methods
+4º verify spec
