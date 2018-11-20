@@ -15,7 +15,7 @@ class NewAchievementForm
     attach_file('Cover image', "#{Rails.root}/spec/fixtures/cover_image.png")
     self
   end
-  
+
   def submit
     click_on('Create Achievement')
     self
