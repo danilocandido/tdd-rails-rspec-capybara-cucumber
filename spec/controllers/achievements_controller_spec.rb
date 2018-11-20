@@ -31,6 +31,40 @@ describe AchievementsController, type: :controller do
     end
   end
 
+  describe 'PUT update' do
+    let(:achievement) { create(:public_achievement) }
+
+    context 'valid data' do
+      let(:valid_data) { attributes_for(:public_achievement, title: 'New Title') }
+
+      it 'redirects to achievements#show' do
+        put :update, :params => { id: achievement.id, achievement: valid_data }
+        expect(response).to redirect_to(achievement)
+      end
+
+      it 'updates achievement in the database' do
+        put :update, :params => { id: achievement.id, achievement: valid_data }
+        achievement.reload
+
+        expect(achievement.title).to eq 'New Title'
+      end
+    end
+
+    context 'invalid data' do
+      let(:invalid_data) { attributes_for(:public_achievement, title: '', description: 'new') }
+
+      it 'renders :edit template' do
+        put :update, :params => { id: achievement.id, achievement: invalid_data }
+        expect(response).to render_template(:edit)
+      end
+
+      it "doesn't update achievement in the database" do
+        put :update, :params => { id: achievement.id, achievement: invalid_data }
+        expect(achievement.description).to_not eq 'new'
+      end
+    end
+  end
+
   describe 'GET new' do
     it 'render :new template' do
       get :new
@@ -61,16 +95,16 @@ describe AchievementsController, type: :controller do
 
   describe 'POST create' do
     context 'valid data' do
-      let(:valid_date) { { achievement: attributes_for(:public_achievement) } }
+      let(:valid_data) { { achievement: attributes_for(:public_achievement) } }
 
       it 'redirects to achievements#show' do
-        post :create, :params => valid_date
+        post :create, :params => valid_data
         expect(response).to redirect_to(achievement_path(assigns[:achievement]))
       end
 
       it 'creates new achievement in database' do
         expect {
-          post :create, :params => valid_date
+          post :create, :params => valid_data
         }.to change(Achievement, :count).by(1)
       end
     end
