@@ -38,6 +38,7 @@ group :test do
   gem 'capybara'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner'
+  gem 'rails-controller-testing'
 end
 
 
