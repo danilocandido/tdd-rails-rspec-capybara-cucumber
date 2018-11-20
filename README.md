@@ -15,9 +15,10 @@ group :test do
   gem 'capybara'
 end
 ```
-
-## run comand tests
+## install rspec
 bin/rails rspec:install
+
+## run tests
 bundle exec spring binstub --all
 
 ## RUN tests
